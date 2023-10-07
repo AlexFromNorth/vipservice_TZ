@@ -2,35 +2,37 @@ import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
 import cities from './Cities.json';
 import { Box } from "@mui/material";
-import './AutoCities.scss'
+import './AutoCities.scss';
+import { AutoCitiesProps } from "../../../types/Types";
 
-function AutoCities({placeholder, value, setValue}) {
-  const [suggestions, setSuggestions] = useState([]);
 
-  const onChange = (event, { newValue }) => {
+function AutoCities({ placeholder, value, setValue }: AutoCitiesProps) {
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>, { newValue }: Autosuggest.ChangeEvent) => {
     setValue(newValue);
   };
 
-  const getSuggestions = (value) => {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
+  const getSuggestions = (inputValue: string) => {
+    const trimmedInputValue = inputValue.trim().toLowerCase();
+    const inputLength = trimmedInputValue.length;
 
     return inputLength === 0
       ? []
       : cities.filter(
-          (city) => city.toLowerCase().slice(0, inputLength) === inputValue
+          (city) => city.toLowerCase().slice(0, inputLength) === trimmedInputValue
         );
   };
 
-  const getSuggestionValue = (suggestion) => suggestion;
+  const getSuggestionValue = (suggestion: string) => suggestion;
 
-  const renderSuggestion = (suggestion) => <Box sx={{}}>{suggestion}</Box>;
+  const renderSuggestion = (suggestion: string) => <Box sx={{}}>{suggestion}</Box>;
 
-  const onSuggestionSelected = (event, { suggestionValue }) => {
+  const onSuggestionSelected = (event: React.FormEvent, { suggestionValue }: Autosuggest.SuggestionSelectedEventData) => {
     console.log(`Выбран город: ${suggestionValue}`);
   };
 
-  const onSuggestionsFetchRequested = ({ value }) => {
+  const onSuggestionsFetchRequested = ({ value }: Autosuggest.SuggestionsFetchRequestedParams) => {
     setSuggestions(getSuggestions(value));
   };
 

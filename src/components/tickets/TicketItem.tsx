@@ -1,15 +1,16 @@
-import { Box } from "@mui/material";
 import React, { useState } from "react";
+import { Box } from "@mui/material";
 import Road from "../../assets/Road.svg";
 import Bag from "../../assets/bag.png";
 import Baggag from "../../assets/багаж.png";
 import logo from "../../assets/logo.png";
 import styles from "./Ticket.module.scss";
 import { format } from "date-fns";
+import { TicketItemProps } from "../../types/Types";
 
-const TicketItem = ({ ticketsInfo }) => {
 
-  const [ticketsTime, setTicketsTime] = useState(['9:20','11:20'])
+const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
+  const [ticketsTime, setTicketsTime] = useState<string[]>(['9:20', '11:20']);
 
   return (
     <>
@@ -123,7 +124,7 @@ const TicketItem = ({ ticketsInfo }) => {
               <Box sx={{ marginTop: "15px" }}>
                 <p className="fs24 fw700">9:20</p>
                 <p className="fw500">{ticketsInfo.arrival}</p>
-                <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
+                <p>{format(ticketsInfo.backDate, "dd.MM.yy")}</p>
               </Box>
               <Box>
                 <img src={Road} alt="Road" />
@@ -132,7 +133,7 @@ const TicketItem = ({ ticketsInfo }) => {
                 <Box sx={{ marginTop: "15px" }}>
                   <p className="fs24 fw700">11:20</p>
                   <p className="fw500">{ticketsInfo.departure}</p>
-                  <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
+                  <p>{format(ticketsInfo.backDate, "dd.MM.yy")}</p>
                 </Box>
                 <Box
                   sx={{

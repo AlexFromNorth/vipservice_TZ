@@ -7,24 +7,25 @@ import { Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addTickets } from "../../store/itemsSlice";
 import "react-datepicker/dist/react-datepicker.css";
-import {format} from 'date-fns';
+import { format } from "date-fns";
+import {TicketData} from "../../types/Types";
 
-const Search = () => {
+const Search: React.FC = () => {
+  const [arrival, setArrival] = useState<string>("");
+  const [departure, setDeparture] = useState<string>("");
 
-  const [arrival, setArrival] = useState("");
-  const [departure, setDeparture] = useState("");
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [backDate, setBackDate] = useState<Date | null>(null);
 
-  const [startDate, setStartDate] = useState();
-  const [backDate, setBackDate] = useState();
+  const isFormValid: boolean =
+    arrival !== "" && departure !== "" && startDate !== null;
 
-  const isFormValid = arrival !== "" && departure !== "" && startDate !==undefined;
-
-  const [btnClick, setBtnClick] = useState(false)
+  const [btnClick, setBtnClick] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
   const handleAddTickets = () => {
-    const ticketData = {
+    const ticketData: TicketData = {
       arrival,
       departure,
       startDate,
@@ -33,35 +34,51 @@ const Search = () => {
     dispatch(addTickets(ticketData));
   };
 
-
-
   return (
     <div className={styles.search}>
       <div className={styles.selectors}>
         <div>
           <label htmlFor="">Откуда</label>
-          <Box sx={btnClick===true && arrival==''? {border: '2px solid red', borderRadius: '10px'}: {border: '2px solid transparent'} }>
-            <AutoCities placeholder="Город вылета" value={arrival} setValue={setArrival}/>
+          <Box
+            sx={
+              btnClick === true && arrival === ""
+                ? { border: "2px solid red", borderRadius: "10px" }
+                : { border: "2px solid transparent" }
+            }
+          >
+            <AutoCities placeholder="Город вылета" value={arrival} setValue={setArrival} />
           </Box>
         </div>
         <div>
           <label htmlFor="">Куда</label>
-          <Box sx={btnClick===true && departure==''? {border: '2px solid red', borderRadius: '10px'}: {border: '2px solid transparent'} }>
+          <Box
+            sx={
+              btnClick === true && departure === ""
+                ? { border: "2px solid red", borderRadius: "10px" }
+                : { border: "2px solid transparent" }
+            }
+          >
             <AutoCities placeholder="Город прилета" value={departure} setValue={setDeparture} />
           </Box>
         </div>
         <div className={styles.calendar}>
-        <label htmlFor="">Туда</label>
-        <Box sx={btnClick===true && startDate==undefined? {border: '2px solid red', borderRadius: '10px'}: {border: '2px solid transparent'} }>
-          <DatePicker
-          className='w-100'
-            showIcon
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            placeholderText="дд.мм.гг"
-            dateFormat="dd.MM.yyyy"
-          />
-        </Box>
+          <label htmlFor="">Туда</label>
+          <Box
+            sx={
+              btnClick === true && startDate === null
+                ? { border: "2px solid red", borderRadius: "10px" }
+                : { border: "2px solid transparent" }
+            }
+          >
+            <DatePicker
+              className="w-100"
+              showIcon
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              placeholderText="дд.мм.гг"
+              dateFormat="dd.MM.yyyy"
+            />
+          </Box>
         </div>
         <div className={styles.calendar}>
           <label htmlFor="">Обратно</label>
@@ -80,7 +97,7 @@ const Search = () => {
             <button>Найти билеты</button>
           </Link>
         ) : (
-          <button onClick={()=>setBtnClick(true)} >Найти билеты</button>
+          <button onClick={() => setBtnClick(true)}>Найти билеты</button>
         )}
       </div>
     </div>
