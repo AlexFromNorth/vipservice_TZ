@@ -8,20 +8,12 @@ const Tickets = () => {
   const ticketsInfo = useSelector((state: any) => {
     return state.items.tickets;
   });
-  console.log(ticketsInfo)
   return (
     <>
       <Search />
-      {ticketsInfo.backDate ? (
-        <TicketWrapper>
-          {/* <TicketItem ticketsInfo={ticketsInfo}/> */}
-          <TicketItem ticketsInfo={ticketsInfo}/>
-        </TicketWrapper>
-      ) : (
         <TicketWrapper>
           <TicketItem ticketsInfo={ticketsInfo}/>
         </TicketWrapper>
-      )}
     </>
   );
 };

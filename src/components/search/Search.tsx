@@ -11,10 +11,6 @@ import {format} from 'date-fns';
 
 const Search = () => {
 
-  // const currentDate = new Date();
-  // const formattedDate = format(currentDate, 'dd MM yy');
-  // console.log(formattedDate);
-
   const [arrival, setArrival] = useState("");
   const [departure, setDeparture] = useState("");
 

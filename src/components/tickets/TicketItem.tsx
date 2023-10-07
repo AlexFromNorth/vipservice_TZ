@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Road from "../../assets/Road.svg";
 import Bag from "../../assets/bag.png";
 import Baggag from "../../assets/багаж.png";
@@ -8,32 +8,33 @@ import styles from "./Ticket.module.scss";
 import { format } from "date-fns";
 
 const TicketItem = ({ ticketsInfo }) => {
-  console.log(ticketsInfo.backDate);
+
+  const [ticketsTime, setTicketsTime] = useState(['9:20','11:20'])
+
   return (
     <>
       <Box className="col-span-2 ">
-        <Box className="relative" sx={{height: '50%'}}>
+        <Box className="relative" sx={{ height: "50%" }}>
           <span className={styles.ticket_logo__label}>Невозвратный</span>
           <img className={styles.ticket_logo__img} src={logo} alt="Logo" />
-          <p className="text-center pb-10">S7 Airlines</p>
+          <p className="text-center pb-10 fs18">S7 Airlines</p>
         </Box>
         {ticketsInfo.backDate ? (
-          <Box className="relative" sx={{height: '50%'}}>
+          <Box className="relative" sx={{ height: "50%" }}>
             <span className={styles.ticket_logo__label}>Невозвратный</span>
             <img className={styles.ticket_logo__img} src={logo} alt="Logo" />
-            <p className="text-center pb-10">S7 Airlines</p>
+            <p className="text-center pb-10 fs18">S7 Airlines</p>
           </Box>
         ) : (
           false
         )}
       </Box>
       <Box className="col-span-7">
-
-        <Box  sx={{marginTop: '44px', paddingRight: '20px'}}>
+        <Box sx={{ marginTop: "44px", paddingRight: "20px" }}>
           <Box className="flex justify-between">
             <Box sx={{ marginTop: "15px" }}>
-              <p>9:20</p>
-              <p>{ticketsInfo.arrival}</p>
+              <p className="fs24 fw700">{ticketsTime[0]}</p>
+              <p className="fw500">{ticketsInfo.arrival}</p>
               <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
             </Box>
             <Box>
@@ -41,8 +42,8 @@ const TicketItem = ({ ticketsInfo }) => {
             </Box>
             <Box className="flex">
               <Box sx={{ marginTop: "15px" }}>
-                <p>11:20</p>
-                <p>{ticketsInfo.departure}</p>
+                <p className="fs24 fw700">{ticketsTime[1]}</p>
+                <p className="fw500">{ticketsInfo.departure}</p>
                 <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
               </Box>
               <Box
@@ -60,7 +61,7 @@ const TicketItem = ({ ticketsInfo }) => {
             </Box>
           </Box>
           {ticketsInfo.backDate == undefined ? (
-            <Box sx={{ marginTop: "24px", marginBottom: '30px' }}>
+            <Box sx={{ marginTop: "24px", marginBottom: "30px" }}>
               <Box
                 sx={{
                   borderRadius: "10px",
@@ -68,9 +69,14 @@ const TicketItem = ({ ticketsInfo }) => {
                   padding: "6px",
                   display: "inline",
                   marginRight: "20px",
+                  fontWeight: "500",
                 }}
+                className="hover"
+
               >
-                09:20 - 11:05
+                <button onClick={()=>setTicketsTime(['09:20','11:05'])}>
+                  <span className="fs18">09:20</span> - 11:05
+                </button>
               </Box>
               <Box
                 sx={{
@@ -79,9 +85,13 @@ const TicketItem = ({ ticketsInfo }) => {
                   padding: "6px",
                   display: "inline",
                   marginRight: "20px",
+                  fontWeight: "500",
                 }}
+                className="hover"
               >
-                10:20 - 12:05
+                <button onClick={()=>setTicketsTime(['10:20','12:05'])}>
+                  <span className="fs18">10:20</span> - 12:05
+                </button>
               </Box>
               <Box
                 sx={{
@@ -90,9 +100,14 @@ const TicketItem = ({ ticketsInfo }) => {
                   padding: "6px",
                   display: "inline",
                   marginRight: "20px",
+                  fontWeight: "500",
                 }}
+                className="hover"
+
               >
-                11:20 - 13:05
+                <button onClick={()=>setTicketsTime(['11:20','13:05'])}>
+                  <span className="fs18">11:20</span> - 13:05
+                </button>
               </Box>
             </Box>
           ) : (
@@ -100,11 +115,14 @@ const TicketItem = ({ ticketsInfo }) => {
           )}
         </Box>
         {ticketsInfo.backDate ? (
-          <Box className="dashed"  sx={{marginTop: '50px', paddingTop: '44px', paddingRight: '20px'}}>
+          <Box
+            className="dashed"
+            sx={{ marginTop: "42px", paddingTop: "44px", paddingRight: "20px" }}
+          >
             <Box className="flex justify-between">
               <Box sx={{ marginTop: "15px" }}>
-                <p>9:20</p>
-                <p>{ticketsInfo.arrival}</p>
+                <p className="fs24 fw700">9:20</p>
+                <p className="fw500">{ticketsInfo.arrival}</p>
                 <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
               </Box>
               <Box>
@@ -112,8 +130,8 @@ const TicketItem = ({ ticketsInfo }) => {
               </Box>
               <Box className="flex">
                 <Box sx={{ marginTop: "15px" }}>
-                  <p>11:20</p>
-                  <p>{ticketsInfo.departure}</p>
+                  <p className="fs24 fw700">11:20</p>
+                  <p className="fw500">{ticketsInfo.departure}</p>
                   <p>{format(ticketsInfo.startDate, "dd.MM.yy")}</p>
                 </Box>
                 <Box
@@ -182,7 +200,11 @@ const TicketItem = ({ ticketsInfo }) => {
           alignItems: "center",
         }}
       >
-        {ticketsInfo.backDate == undefined ? <span>4 150 ₽</span> : <span>8 300 ₽</span>}
+        {ticketsInfo.backDate == undefined ? (
+          <span className="fs32 fw700">4 150 ₽</span>
+        ) : (
+          <span className="fs32 fw700">8 300 ₽</span>
+        )}
       </Box>
     </>
   );

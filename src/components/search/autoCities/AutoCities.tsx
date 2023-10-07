@@ -5,15 +5,12 @@ import { Box } from "@mui/material";
 import './AutoCities.scss'
 
 function AutoCities({placeholder, value, setValue}) {
-  // const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
-  // Функция для обработки ввода пользователя и поиска подсказок
   const onChange = (event, { newValue }) => {
     setValue(newValue);
   };
 
-  // Функция для отображения подсказок
   const getSuggestions = (value) => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -25,24 +22,18 @@ function AutoCities({placeholder, value, setValue}) {
         );
   };
 
-  // Функция для отображения подсказки при клике
   const getSuggestionValue = (suggestion) => suggestion;
 
-  // Функция для отображения списка подсказок
   const renderSuggestion = (suggestion) => <Box sx={{}}>{suggestion}</Box>;
 
-  // Функция для обработки выбора подсказки
   const onSuggestionSelected = (event, { suggestionValue }) => {
-    // Вы можете выполнить дополнительные действия при выборе подсказки
     console.log(`Выбран город: ${suggestionValue}`);
   };
 
-  // Функция для обновления списка подсказок
   const onSuggestionsFetchRequested = ({ value }) => {
     setSuggestions(getSuggestions(value));
   };
 
-  // Функция для очистки списка подсказок
   const onSuggestionsClearRequested = () => {
     setSuggestions([]);
   };

@@ -1,9 +1,11 @@
+@import '../../variables.scss';
+
 .search {
   border-radius: 15px;
   box-shadow: 0px 2px 20px rgba(170, 170, 170, 0.5);
   background: linear-gradient(
     180deg,
-    rgba(92, 135, 219, 1) 50%,
+    $primary-blue 50%,
     rgba(255, 255, 255, 1) 50%
   );
 
@@ -44,7 +46,7 @@
   button {
     padding: 12px;
     border-radius: 10px;
-    background-color: rgba(92, 135, 219, 1);
+    background-color: $primary-blue;
     color: white;
   }
 }

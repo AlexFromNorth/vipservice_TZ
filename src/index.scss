@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "variables";
+
+*,
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: $text-black;
+}
+button {
+  cursor: pointer;
+}
+.hover:hover{
+  background-color: $hover;
+  border: 1px solid rgba(0,0,0,0);
+}
+.dashed {
+  border-top: 1px dashed $border-blue;
+}
+.fs18 {
+  font-size: 18px;
+}
+.fs24 {
+  font-size: 24px;
+}
+.fs32 {
+  font-size: 32px;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+.fw700 {
+  font-weight: 700;
+}
