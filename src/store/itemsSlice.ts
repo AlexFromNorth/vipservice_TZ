@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tickets: [], // 
+  tickets: [], 
 };
 
 const itemsSlice = createSlice({
@@ -9,9 +9,7 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
     addTickets(state, action) {
-      // console.log(action.payload)
       state.tickets = action.payload;
-      // console.log(state.tickets)
     },
 
   },
