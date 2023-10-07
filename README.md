@@ -37,6 +37,9 @@
 <img src="src/images/search.png" alt="search">
 <br />
 <br />
+<img src="src/images/ticket.png" alt="tickets" >
+<br />
+<br />
 <img src="src/images/tickets.png" alt="tickets" >
 <br />
 <br />
