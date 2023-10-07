@@ -1,8 +1,42 @@
-# React + Vite
+# Проект [Tickets](https://github.com/AlexFromNorth/vipservice_TZ) | Frontend / Redux
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📜 Описание:
+небольшое приложение `React.js` для поиска авиабилетов. Созданно с применением `Vite` и имеет переиспользуемые компоненты.
+В планах  улучшить визуальную часть, поместить часть данных в кэш, сделать корзину.
 
-Currently, two official plugins are available:
+### ⚙️ Функционал:
+* Подбор билетов по необходимым датам.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Выбор билетов как в одну сторону, так и обе(обратную тоже).
+
+
+### 🥞 Стек:
+
+`React` `Redux` `TypeScript` `SCSS` `Material UI` `Tailwind` 
+
+### 💽 Установка и запуск:
+
+1. Склонировать репозиторий в текущую папку:
+
+```git clone https://github.com/AlexFromNorth/vipservice_TZ.git ```
+
+2. Установить зависимости:
+
+```yarn install```
+
+3. Запустить проект в режиме разработки:
+
+```yarn start или yarn run dev```
+
+4. Скорее всего ваш адрес будет таким:
+
+```http://localhost:5173/avia```
+
+<br />
+<br />
+<img src="src/images/search.png" alt="search">
+<br />
+<br />
+<img src="src/images/tickets.png" alt="tickets" >
+<br />
+<br />
