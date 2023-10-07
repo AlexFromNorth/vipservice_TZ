@@ -1,21 +1,29 @@
-import React from 'react'
-import TicketWrapper from './TicketWrapper'
-import TicketItem from './TicketItem'
-import Search from '../search/search'
+import React from "react";
+import TicketWrapper from "./TicketWrapper";
+import TicketItem from "./TicketItem";
+import Search from "../search/search";
+import { useSelector } from "react-redux";
 
 const Tickets = () => {
+  const ticketsInfo = useSelector((state: any) => {
+    return state.items.tickets;
+  });
+  console.log(ticketsInfo)
   return (
     <>
-        <Search/>
+      <Search />
+      {ticketsInfo.backDate ? (
         <TicketWrapper>
-          <TicketItem />
+          {/* <TicketItem ticketsInfo={ticketsInfo}/> */}
+          <TicketItem ticketsInfo={ticketsInfo}/>
         </TicketWrapper>
+      ) : (
         <TicketWrapper>
-          <TicketItem />
-          <TicketItem />
+          <TicketItem ticketsInfo={ticketsInfo}/>
         </TicketWrapper>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Tickets
+export default Tickets;

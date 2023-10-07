@@ -26,6 +26,9 @@
     .calendar > div{
         width: 100%;
 
+        > div:first-of-type{
+            width: 100%;
+        }
         input{
             padding: 10px 12px;
             width: 100%;

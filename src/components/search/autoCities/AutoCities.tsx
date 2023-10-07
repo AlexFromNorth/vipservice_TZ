@@ -4,8 +4,8 @@ import cities from './Cities.json';
 import { Box } from "@mui/material";
 import './AutoCities.scss'
 
-function AutoCities({placeholder}) {
-  const [value, setValue] = useState("");
+function AutoCities({placeholder, value, setValue}) {
+  // const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   // Функция для обработки ввода пользователя и поиска подсказок
