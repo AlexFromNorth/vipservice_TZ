@@ -21,13 +21,13 @@ button {
   border-top: 1px dashed $border-blue;
 }
 .fs18 {
-  font-size: 18px;
+  font-size: 18px!important;
 }
 .fs24 {
-  font-size: 24px;
+  font-size: 24px!important;
 }
 .fs32 {
-  font-size: 32px;
+  font-size: 32px!important;
 }
 
 .fw500 {
@@ -35,4 +35,15 @@ button {
 }
 .fw700 {
   font-weight: 700;
+}
+.red{
+  color: #c81414;
+  text-shadow: 0px 0px 8px white;
+}
+.none{
+  display: none;
+}
+.active{
+  background-color: $hover;
+  border: 1px solid rgba(0,0,0,0);
 }

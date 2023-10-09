@@ -11,7 +11,6 @@ const Tickets: React.FC = () => {
 
   return (
     <>
-      <Search />
       <TicketWrapper>
         <TicketItem ticketsInfo={ticketsInfo} />
       </TicketWrapper>

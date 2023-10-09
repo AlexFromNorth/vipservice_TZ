@@ -8,9 +8,8 @@ import styles from "./Ticket.module.scss";
 import { format } from "date-fns";
 import { TicketItemProps } from "../../types/Types";
 
-
 const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
-  const [ticketsTime, setTicketsTime] = useState<string[]>(['9:20', '11:20']);
+  const [ticketsTime, setTicketsTime] = useState<string[]>(["09:20", "11:20"]);
 
   return (
     <>
@@ -72,10 +71,11 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
                   marginRight: "20px",
                   fontWeight: "500",
                 }}
-                className="hover"
-
+                className={
+                  ticketsTime[0] === "09:20" ? "active hover" : "hover"
+                }
               >
-                <button onClick={()=>setTicketsTime(['09:20','11:05'])}>
+                <button onClick={() => setTicketsTime(["09:20", "11:05"])}>
                   <span className="fs18">09:20</span> - 11:05
                 </button>
               </Box>
@@ -88,9 +88,11 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
                   marginRight: "20px",
                   fontWeight: "500",
                 }}
-                className="hover"
+                className={
+                  ticketsTime[0] === "10:20" ? "active hover" : "hover"
+                }
               >
-                <button onClick={()=>setTicketsTime(['10:20','12:05'])}>
+                <button onClick={() => setTicketsTime(["10:20", "12:05"])}>
                   <span className="fs18">10:20</span> - 12:05
                 </button>
               </Box>
@@ -103,10 +105,11 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
                   marginRight: "20px",
                   fontWeight: "500",
                 }}
-                className="hover"
-
+                className={
+                  ticketsTime[0] === "11:20" ? "active hover" : "hover"
+                }
               >
-                <button onClick={()=>setTicketsTime(['11:20','13:05'])}>
+                <button onClick={() => setTicketsTime(["11:20", "13:05"])}>
                   <span className="fs18">11:20</span> - 13:05
                 </button>
               </Box>
@@ -122,8 +125,8 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
           >
             <Box className="flex justify-between">
               <Box sx={{ marginTop: "15px" }}>
-                <p className="fs24 fw700">9:20</p>
-                <p className="fw500">{ticketsInfo.arrival}</p>
+                <p className="fs24 fw700">09:20</p>
+                <p className="fw500">{ticketsInfo.departure}</p>
                 <p>{format(ticketsInfo.backDate, "dd.MM.yy")}</p>
               </Box>
               <Box>
@@ -132,7 +135,7 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
               <Box className="flex">
                 <Box sx={{ marginTop: "15px" }}>
                   <p className="fs24 fw700">11:20</p>
-                  <p className="fw500">{ticketsInfo.departure}</p>
+                  <p className="fw500">{ticketsInfo.arrival}</p>
                   <p>{format(ticketsInfo.backDate, "dd.MM.yy")}</p>
                 </Box>
                 <Box
@@ -149,7 +152,7 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
                 </Box>
               </Box>
             </Box>
-            {ticketsInfo.backDate == undefined ? (
+            {/* {ticketsInfo.backDate == undefined ? (
               <Box sx={{ marginTop: "24px" }}>
                 <Box
                   sx={{
@@ -187,7 +190,7 @@ const TicketItem: React.FC<TicketItemProps> = ({ ticketsInfo }) => {
               </Box>
             ) : (
               false
-            )}
+            )} */}
           </Box>
         ) : (
           false
